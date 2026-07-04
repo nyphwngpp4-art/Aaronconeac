@@ -30,6 +30,15 @@ The first command opens a browser to authorize your Cloudflare account (one-time
 - [ ] **Get real photos** to replace the labeled `PHOTO:` placeholder blocks (crew/family in front of the shop) after the client signs.
 - [ ] Test the page on a phone at 375px width — the call bar should be reachable at every scroll position.
 
+## Design notes (taste-skill pass)
+
+- **Design read:** redesign-preserve of a trust-first local trade landing page for rural Texas homeowners; plain-spoken family-shop language; native CSS type-and-color system (no framework, per the no-build constraint).
+- **Dials:** `DESIGN_VARIANCE 4 / MOTION_INTENSITY 3 / VISUAL_DENSITY 4` (trust-first preset, not baseline).
+- **Theme lock:** one fixed light theme; dark navy appears only as chrome (hero + footer). No mid-page inversions, no `prefers-color-scheme` dark variant by brand decision (the demo must look identical on the owner's phone regardless of OS setting).
+- **Icons:** Phosphor Icons (fill weight), inlined as SVG symbols from `@phosphor-icons/core` v2.1.1. One family, one weight.
+- **Deliberate skill overrides, justified by the client brief:** brand pills are text-only (trademark-clean requirement, so no logo wall with real SVG logos); photo slots are labeled placeholders instead of stock/Picsum images (zero-stock-photography requirement); the persistent call CTA appears in header, hero, and mobile bar by design (it is the single conversion goal) with one shared label form.
+- **Motion:** hover/active states plus smooth anchor scroll only; smooth scroll is gated behind `prefers-reduced-motion: no-preference`.
+
 ## Production notes
 
 - The **Request Service form is front-end only** in this demo. For production, wire it to a Cloudflare Pages Function that sends an email or SMS (see the HTML comment above the form section).

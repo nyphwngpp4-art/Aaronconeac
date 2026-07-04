@@ -1,6 +1,8 @@
 /* ==========================================================================
-   Aaron Cone AC & Heating — demo site
+   Aaron Cone AC & Heating - demo site
    Palette: navy/steel base, warm off-white, burnt orange (heat), ice blue (cool)
+   Single fixed light theme (brand decision): dark navy chrome at hero + footer,
+   warm off-white body throughout. Sections never invert mid-page.
    ========================================================================== */
 
 :root {
@@ -21,6 +23,8 @@
 
   --header-h: 60px;
   --callbar-h: 56px;
+  /* Shape system: one radius scale for the whole page */
+  --radius: 6px;
 }
 
 /* Metric-matched fallback so the display font swap causes no layout shift */
@@ -36,8 +40,11 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 12px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
 }
 
 body {
@@ -51,6 +58,7 @@ body {
 }
 
 img, svg { display: block; max-width: 100%; }
+svg { fill: currentColor; }
 
 .container {
   width: 100%;
@@ -59,7 +67,7 @@ img, svg { display: block; max-width: 100%; }
   padding: 0 20px;
 }
 
-.container-narrow { max-width: 520px; }
+.container-narrow { max-width: 560px; }
 
 h1, h2, h3 {
   font-family: var(--font-display);
@@ -103,11 +111,14 @@ h1, h2, h3 {
   font-size: 1rem;
   text-decoration: none;
   border: 2px solid transparent;
-  border-radius: 6px;
+  border-radius: var(--radius);
   padding: 12px 22px;
   cursor: pointer;
   min-height: 48px;
+  white-space: nowrap;
 }
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: 3px solid var(--ice-deep); outline-offset: 2px; }
 
 .btn-primary {
   background: var(--hot);
@@ -191,7 +202,6 @@ h1, h2, h3 {
   padding: 8px 14px;
   min-height: 42px;
   font-size: 0.95rem;
-  white-space: nowrap;
 }
 .header-call:hover, .header-call:focus-visible { background: var(--hot-dark); }
 
@@ -208,7 +218,7 @@ h1, h2, h3 {
     transparent 9px
   );
   color: var(--paper);
-  padding: 64px 0 56px;
+  padding: 56px 0 56px;
 }
 
 .hero-kicker {
@@ -239,7 +249,6 @@ h1, h2, h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 18px;
 }
 .hero-ctas .btn-secondary {
   color: var(--paper);
@@ -248,12 +257,6 @@ h1, h2, h3 {
 .hero-ctas .btn-secondary:hover, .hero-ctas .btn-secondary:focus-visible {
   background: var(--ice);
   color: var(--navy);
-}
-
-.hero-trust {
-  font-size: 0.9rem;
-  color: var(--ice);
-  letter-spacing: 0.02em;
 }
 
 /* ---------- Trust bar ---------- */
@@ -292,31 +295,35 @@ h1, h2, h3 {
   color: var(--ice);
 }
 
-/* ---------- Services ---------- */
+/* ---------- Services (divided list, not cards) ---------- */
 
-.services-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
+.services-list {
+  border-top: 1px solid var(--line);
 }
 
-.service-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-top: 4px solid var(--steel);
-  border-radius: 8px;
-  padding: 24px;
+.service-row {
+  border-bottom: 1px solid var(--line);
+  padding: 28px 0;
 }
-.service-card h3 {
-  font-size: 1.25rem;
-  margin: 14px 0 8px;
+
+.service-lead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
 }
-.service-card p { color: var(--steel); }
+.service-lead h3 { font-size: 1.25rem; }
+
+.service-row p {
+  color: var(--steel);
+  max-width: 62ch;
+}
 
 .service-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 8px;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -348,7 +355,7 @@ h1, h2, h3 {
   color: var(--navy);
   background: #fff;
   border: 1.5px solid var(--navy);
-  border-radius: 999px;
+  border-radius: var(--radius);
   padding: 7px 16px;
 }
 
@@ -363,7 +370,7 @@ h1, h2, h3 {
 .review-card {
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius);
   padding: 20px;
   min-height: 140px;
   display: flex;
@@ -377,7 +384,11 @@ h1, h2, h3 {
 }
 .review-card figcaption {
   margin-top: 12px;
-  font-size: 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
   color: var(--steel);
 }
 .stars {
@@ -397,7 +408,7 @@ h1, h2, h3 {
   font-style: italic;
 }
 .review-placeholder .stars { color: var(--ice-deep); opacity: 0.5; }
-.review-placeholder figcaption { color: var(--ice-deep); font-style: italic; }
+.review-placeholder figcaption { color: var(--ice-deep); }
 
 .reviews-cta {
   margin-top: 28px;
@@ -423,7 +434,7 @@ h1, h2, h3 {
     transparent 12px
   );
   border: 2px dashed var(--ice-deep);
-  border-radius: 8px;
+  border-radius: var(--radius);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -460,7 +471,7 @@ h1, h2, h3 {
   font-size: 0.95rem;
   color: var(--paper);
   background: var(--steel);
-  border-radius: 6px;
+  border-radius: var(--radius);
   padding: 9px 16px;
 }
 .area-note {
@@ -469,22 +480,18 @@ h1, h2, h3 {
   max-width: 52ch;
 }
 
-/* ---------- Request service form ---------- */
+/* ---------- Request service form (light, framed panel) ---------- */
 
-.section-request {
-  background: var(--navy);
-  background-image: repeating-linear-gradient(
-    -45deg,
-    rgba(255, 255, 255, 0.02) 0px,
-    rgba(255, 255, 255, 0.02) 1px,
-    transparent 1px,
-    transparent 9px
-  );
-}
-.section-request .section-title { color: var(--paper); }
 .request-lede {
-  color: var(--ice);
+  color: var(--steel);
   margin: -12px 0 24px;
+}
+
+.request-panel {
+  background: #fff;
+  border: 2px solid var(--navy);
+  border-radius: var(--radius);
+  padding: 24px;
 }
 
 .form-field { margin-bottom: 16px; }
@@ -495,7 +502,7 @@ h1, h2, h3 {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 0.8rem;
-  color: var(--ice);
+  color: var(--navy);
   margin-bottom: 6px;
 }
 .form-field input {
@@ -504,29 +511,37 @@ h1, h2, h3 {
   font-size: 1.1rem;
   color: var(--ink);
   background: var(--paper);
-  border: 2px solid transparent;
-  border-radius: 6px;
+  border: 2px solid var(--steel);
+  border-radius: var(--radius);
   padding: 12px 14px;
   min-height: 48px;
 }
-.form-field input:focus {
-  outline: none;
-  border-color: var(--ice);
+.form-field input:focus-visible {
+  outline: 3px solid var(--ice-deep);
+  outline-offset: 1px;
+  border-color: var(--navy);
 }
-.form-field input[aria-invalid="true"] { border-color: var(--hot); }
+.form-field input[aria-invalid="true"] { border-color: var(--hot-dark); }
+
+.form-error {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--hot-dark);
+}
 
 .form-promise {
   font-weight: 700;
-  color: var(--paper);
+  color: var(--navy);
   margin: 20px 0 12px;
 }
 
 .form-confirm {
   margin-top: 16px;
-  background: var(--ice);
-  color: var(--navy);
+  background: var(--navy);
+  color: var(--paper);
   font-weight: 700;
-  border-radius: 6px;
+  border-radius: var(--radius);
   padding: 14px 16px;
   text-align: center;
 }
@@ -560,17 +575,16 @@ h1, h2, h3 {
 .footer-phone:hover, .footer-phone:focus-visible { color: var(--ice); }
 
 .footer-placeholder {
-  display: inline-block;
+  display: table;
   margin-top: 10px;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--ice-deep);
   border: 1px dashed var(--ice-deep);
-  border-radius: 4px;
+  border-radius: var(--radius);
   padding: 4px 10px;
 }
-.footer-block .footer-placeholder { display: table; }
 
 .footer-credit {
   padding-top: 20px;
@@ -612,11 +626,27 @@ h1, h2, h3 {
   .section { padding: 80px 0; }
 
   .trust-grid { grid-template-columns: repeat(4, 1fr); }
-  .services-grid { grid-template-columns: repeat(3, 1fr); }
-  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
   .about-grid { grid-template-columns: 1.1fr 1fr; align-items: center; }
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
 
-  .hero { padding: 100px 0 84px; }
+  /* Service rows: title column left, copy right */
+  .service-row {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .service-lead {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 0;
+  }
+  .service-row p { margin-top: 4px; }
+
+  /* Hero top padding capped at 6rem per desktop */
+  .hero { padding: 88px 0 80px; }
+
+  .request-panel { padding: 32px; }
 }
 
 @media (min-width: 920px) {
