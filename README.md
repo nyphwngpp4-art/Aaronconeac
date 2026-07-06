@@ -9,6 +9,9 @@ Single-page static demo site for Aaron Cone Air Conditioning & Heating (Brownwoo
 | `index.html` | The entire page |
 | `styles.css` | All styles |
 | `app.js` | Callback-form demo behavior (front-end only) |
+| `fonts/oswald-latin-var.woff2` | Self-hosted display font (no third-party requests) |
+| `favicon.svg` / `apple-touch-icon.png` | Browser tab + home screen icons |
+| `og-image.png` | Social share preview card (1200x630) |
 
 ## Deploy to Cloudflare Pages
 
@@ -23,12 +26,16 @@ The first command opens a browser to authorize your Cloudflare account (one-time
 
 ## Before the client meeting — checklist
 
-- [ ] **Fill the four empty review slots.** Open the live Google listing for Aaron Cone Air Conditioning and paste short excerpts **verbatim** (plus reviewer first name) into the four cards marked `REVIEW SLOT` in `index.html`. Do not paraphrase or invent reviews.
-- [ ] **Verify the TX license number.** Look it up on the TDLR license search (tdlr.texas.gov) and replace `TX License # [VERIFY-TDLR]` in the footer. Do not present the site with the placeholder if the number is available.
+- [x] **Review slots filled.** All six review cards carry verbatim short excerpts from real reviews. Add reviewer first names to the two newest Google review cards if known.
+- [x] **TX license verified.** Footer shows TACLA00088672E (TDLR, Active, expires 05/17/2027).
 - [ ] **Confirm business hours** with the owner and replace the `HOURS: [confirm with owner]` placeholder in the footer.
 - [ ] **Check the status of coneairconditioning.com** — is the old domain live, parked, or expired? This affects the domain pitch (point the existing domain at the new site vs. register fresh).
-- [ ] **Get real photos** to replace the labeled `PHOTO:` placeholder blocks (crew/family in front of the shop) after the client signs.
+- [ ] **Get real photos** to replace the labeled `PHOTO:` placeholder block (crew/family in front of the shop) after the client signs.
 - [ ] Test the page on a phone at 375px width — the call bar should be reachable at every scroll position.
+
+## Custom domain (aaronconehvac.agaviai.com)
+
+After the first deploy, in the Cloudflare dashboard: **Workers & Pages → aaron-cone-hvac → Custom domains → Set up a custom domain** → `aaronconehvac.agaviai.com`. The agaviai.com zone is on Cloudflare, so the CNAME and TLS certificate are created automatically (CLI equivalent: `npx wrangler pages domain add aaronconehvac.agaviai.com --project-name=aaron-cone-hvac`). If the zone lives in a different Cloudflare account than the Pages project, instead add a proxied CNAME `aaronconehvac` → `aaron-cone-hvac.pages.dev` in the zone and complete validation in the Pages project.
 
 ## Design notes (taste-skill pass)
 
