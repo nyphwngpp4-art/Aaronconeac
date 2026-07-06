@@ -434,35 +434,12 @@ h1, h2, h3 {
 }
 .about-copy p { margin-bottom: 14px; max-width: 52ch; }
 
-.photo-placeholder {
-  background: var(--navy);
-  background-image: repeating-linear-gradient(
-    -45deg,
-    rgba(169, 214, 229, 0.08) 0px,
-    rgba(169, 214, 229, 0.08) 2px,
-    transparent 2px,
-    transparent 12px
-  );
-  border: 2px dashed var(--ice-deep);
-  border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
-}
-.photo-placeholder span {
-  font-family: var(--font-display);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.85rem;
-  color: var(--ice);
-  max-width: 28ch;
-}
-.photo-about {
-  aspect-ratio: 4 / 3;
+.about-photo { margin: 0; }
+.about-photo img {
   width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
 }
 
 /* ---------- Service area ---------- */
@@ -584,17 +561,7 @@ h1, h2, h3 {
 }
 .footer-phone:hover, .footer-phone:focus-visible { color: var(--ice); }
 
-.footer-placeholder {
-  display: table;
-  margin-top: 10px;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ice-deep);
-  border: 1px dashed var(--ice-deep);
-  border-radius: var(--radius);
-  padding: 4px 10px;
-}
+.footer-hours { margin-top: 10px; }
 
 .footer-license {
   margin-top: 10px;
