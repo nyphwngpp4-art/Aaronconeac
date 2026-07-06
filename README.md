@@ -27,11 +27,11 @@ The first command opens a browser to authorize your Cloudflare account (one-time
 
 ## Before the client meeting — checklist
 
-- [x] **Review slots filled.** All six review cards carry verbatim short excerpts from real reviews. Add reviewer first names to the two newest Google review cards if known.
+- [x] **Review slots filled.** All six review cards carry verbatim short excerpts from real reviews, attributed by first name where known (Juan Ozuna and Dennis Kelly for the two Google excerpts). Spare quote if ever needed: Alejandra's Google review ("They are very respectful and efficient and very honest as well!").
 - [x] **TX license verified.** Footer shows TACLA00088672E (TDLR, Active, expires 05/17/2027).
 - [x] **Hours added.** Footer shows Mon-Fri 8 AM-5 PM, weekends closed (per the Google/Yelp listings).
 - [x] **Real photo in place.** The About section uses the shop-front van photo (`photos/shop-van.jpg`, color-corrected). Swap in a crew/family shot later if the owner has one.
-- [ ] **Check the status of aaronconeac.com** — this is the domain painted on the shop sign (the older directory listing said coneairconditioning.com; check both). If it's live or parked, the pitch is "point your existing domain at the new site."
+- [x] **Domain checked: aaronconeac.com has lapsed and is available to register** (~$10.46/yr at cost on Cloudflare Registrar). This is the domain painted on the shop sign and van, so it is strong pitch material: "the web address on your building goes nowhere today; for ten dollars a year it points at this site." Decide before the meeting whether to pre-register it (defensively cheap) or register it in the client's own Cloudflare account at signing so the owner holds his domain.
 - [ ] **Pitch material: the Google listing has a typo** — Tuesday reads "8 AM-5 AM." Offering to clean up the listing is an easy add-on to the site pitch.
 - [ ] Test the page on a phone at 375px width — the call bar should be reachable at every scroll position.
 
